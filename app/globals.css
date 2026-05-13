@@ -1,0 +1,53 @@
+@import url('https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700&family=IBM+Plex+Mono:wght@400;500;700&display=swap');
+
+:root {
+  --black:   #0A0A0A;
+  --white:   #F0EDE6;
+  --ember:   #D97B3A;
+  --forest:  #2C3E35;
+  --sand:    #B8A88A;
+  --trail:   #4A4238;
+  --dot-color: rgba(217,123,58,0.18);
+}
+
+* { margin: 0; padding: 0; box-sizing: border-box; }
+html { scroll-behavior: smooth; }
+
+body {
+  background-color: var(--black);
+  color: var(--white);
+  font-family: 'Space Grotesk', sans-serif;
+  overflow-x: hidden;
+  cursor: crosshair;
+}
+
+/* Dithered dot pattern — the core of this design system */
+body::before {
+  content: '';
+  position: fixed;
+  inset: 0;
+  background-image: radial-gradient(circle, var(--dot-color) 1px, transparent 1px);
+  background-size: 6px 6px;
+  pointer-events: none;
+  z-index: 0;
+}
+
+/* Dithered fade overlay — simulates shading with dots */
+body::after {
+  content: '';
+  position: fixed;
+  inset: 0;
+  background: radial-gradient(
+    ellipse 70% 70% at 50% 0%,
+    transparent 0%,
+    rgba(10,10,10,0.6) 60%,
+    rgba(10,10,10,0.95) 100%
+  );
+  pointer-events: none;
+  z-index: 0;
+}
+
+::-webkit-scrollbar { width: 2px; }
+::-webkit-scrollbar-track { background: var(--black); }
+::-webkit-scrollbar-thumb { background: var(--ember); }
+::selection { background: var(--ember); color: var(--black); }
